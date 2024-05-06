@@ -1,0 +1,6 @@
+Teil 1: Get ComputerChoice
+
+generate random number 0-0.9
+multiply w 10
+random number between 0-9
+set rock paper scissors: 0
