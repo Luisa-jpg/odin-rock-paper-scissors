@@ -10,10 +10,41 @@
 
 <body>
     <div class="button-wrapper">
-        <button><p></p><i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>rock</p></button>
-        <button><p></p><i class="fa-solid fa-hand fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>paper</p></button>
-        <button><p></p><i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>scissors</p></button>
+         <button id="rockBtn"><p></p><i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>rock</p></button>
+        <button id="paperBtn"><p></p><i class="fa-solid fa-hand fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>paper</p></button>
+         <button id="sciBtn"><p></p><i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>scissors</p></button>
     </div>
+
+    <div class="score-wrapper-outer">
+        <h1>Score</h1>
+        <div class="score-wrapper">
+            <div class="score-side" id="humanScore">
+                <p>you</p>
+                <div class="points">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <p>:</p>
+
+            <div class="score-side" id="computerScore">
+                <p>computer</p>
+                <div class="points">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <p id="end"></p>
+    </div>
+
 </body>
 
 </html>

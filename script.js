@@ -1,6 +1,3 @@
-console.log("The Game begins!");
-
-
 //Step 1: getComputerChoice
 
 function getComputerChoice() {
@@ -26,6 +23,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 //Step 4: Round
+const points = document.querySelectorAll(".points div");
+console.log(points);
+
 function youLose() {
     alert( "You lost! Score: " + humanScore + " : " + ++computerScore);
     return computerScore;
@@ -90,16 +90,32 @@ function playGame() {
         console.log("Round " + round + " of 5")
         console.log(playRound(getComputerChoice(), getHumanChoice()))
     }*/
-    const btn = document.querySelectorAll("button");
+    const message = document.querySelector("#end");
+    const btns = document.querySelector(".button-wrapper");
 
-    /*
+    btns.addEventListener('click', (event) => {
+        let target = event.target;
+        switch (target.id) {
+            case 'rockBtn':
+                alert("You chose rock!");
+                alert(playRound(getComputerChoice(), "rock"));
+                break;
+            case 'paperBtn':
+                alert("You chose paper!");
+                alert(playRound(getComputerChoice(), "paper"));
+                break;
+            case 'sciBtn':
+                alert("You chose scissors!");
+                alert(playRound(getComputerChoice(), "paper"));
+                break;
+        }
+    });
+
     if (humanScore > computerScore) {
-        console.log("Congrats, you won the game! Final score: " + humanScore + " : " + computerScore)
-    } if (humanScore < computerScore) {
-        console.log("You lost the game... Final score: " + humanScore + " : " + computerScore)
-    } else {
-        console.log("It's a draw! Final score: " + humanScore + " : " + computerScore)
-    }*/
+        message.textContent = "Congrats, you won the game!";
+    } else if (humanScore < computerScore) {
+        message.textContent = "You lost the game...";
+    };
 }
 
 playGame()
