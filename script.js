@@ -1,21 +1,7 @@
-console.log("Hello World");
-
-/*
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-  }
-
-0.7 * (4-1)+1
-3.1
-
-let gameChoice
-*/
+console.log("The Game begins!");
 
 
 //Step 1: getComputerChoice
-
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3 + 1);
@@ -100,17 +86,20 @@ function playRound(computerChoice, humanChoice) {
 
 
 function playGame() {
-    for (let round = 1; round < 6; round++) {
+    /*for (let round = 1; round < 6; round++) {
         console.log("Round " + round + " of 5")
         console.log(playRound(getComputerChoice(), getHumanChoice()))
-    }
+    }*/
+    const btn = document.querySelectorAll("button");
+
+    /*
     if (humanScore > computerScore) {
         console.log("Congrats, you won the game! Final score: " + humanScore + " : " + computerScore)
     } if (humanScore < computerScore) {
         console.log("You lost the game... Final score: " + humanScore + " : " + computerScore)
     } else {
         console.log("It's a draw! Final score: " + humanScore + " : " + computerScore)
-    }
+    }*/
 }
 
 playGame()
