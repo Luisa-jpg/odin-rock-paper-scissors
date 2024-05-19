@@ -9,36 +9,39 @@
     <script src="https://kit.fontawesome.com/16cdc390ae.js" crossorigin="anonymous"></script>
 
 <body>
+    <h1>Rock Paper Scissors</h1>
     <div class="button-wrapper">
-         <button id="rockBtn"><p></p><i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>rock</p></button>
+        <button id="rockBtn"><p></p><i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>rock</p></button>
         <button id="paperBtn"><p></p><i class="fa-solid fa-hand fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>paper</p></button>
-         <button id="sciBtn"><p></p><i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>scissors</p></button>
+        <button id="sciBtn"><p></p><i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>scissors</p></button>
     </div>
-
+    <div class="status">
+        <p>The computer chose scissors!</p>
+    </div>
     <div class="score-wrapper-outer">
-        <h1>Score</h1>
+        <h3>Score <span style="color: rgb(134, 223, 228)"><i class="fa-solid fa-gamepad"></i></span></h2>
         <div class="score-wrapper">
             <div class="score-side" id="humanScore">
                 <p>you</p>
                 <div class="points">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
                 </div>
             </div>
 
-            <p>:</p>
+            <p style="color: rgb(134, 223, 228)">:</p>
 
             <div class="score-side" id="computerScore">
                 <p>computer</p>
                 <div class="points">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
+                    <div class="empty"></div>
                 </div>
             </div>
         </div>

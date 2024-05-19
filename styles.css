@@ -1,14 +1,25 @@
 body {
-    background-color: #ced4e0;
+    background-color: #35383e;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     font-family: Helvetica, sans-serif;
+    padding: 50px;
 }
+
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+    color: white;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+h3 {
+    font-size: 2em;
 }
 
 .score-wrapper-outer {
@@ -20,6 +31,18 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 50px;
     width: 50%;
     color:white;
+}
+
+.status {
+    background-color: rgb(134, 223, 228);
+    height: 40px;
+    border-radius: 40px;
+    text-align: center;
+    padding: 0 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-wrapper {
@@ -45,16 +68,26 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .points {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
-.points div {
-    height: 30px;
-    width: 30px;
+#humanScore .points {
+    flex-direction: row-reverse;
+}
+
+.empty, .full {
+    height: 40px;
+    width: 40px;
     border-radius: 100%;
-    background-color: white;
-    border: 5px solid rgb(134, 223, 228);
     flex: none;
+}
+
+.empty {
+    background-color: #ced4e0;
+}
+
+.full {
+    background-color: rgb(134, 223, 228);
 }
 
 .score-side {
