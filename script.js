@@ -23,12 +23,11 @@ const ComMessage = "The computer chose ";
 const wMessage = "You won. ";
 const lMessage = "You lost. ";
 const drawMessage = "It's a draw. ";
+const replayIcon = document.createElement("i");
 
-// Replay Button
-const replayBtn = document.createElement("button");
-const pEmpty = document.createElement("p");
-const icon = document.createElement("i");
-const pReplay = document.createElement("p");
+const message = document.querySelector("#end");
+const btns = document.querySelector(".button-wrapper");
+
 
 // Round
 
@@ -61,9 +60,6 @@ function playRound(computerChoice, humanChoice) {
 // Game
 
 function playGame() {
-    const message = document.querySelector("#end");
-    const btns = document.querySelector(".button-wrapper");
-
     btns.addEventListener('click', (e) => { ; //mit closest() lösen?
         switch (e.target.id) {
             case 'rockBtn':
@@ -89,20 +85,21 @@ function playGame() {
 };
 
 function endGame() {
-    document.body.insertBefore(replayBtn, statusDiv);
-    replayBtn.appendChild(pEmpty);
-    replayBtn.appendChild(icon);
-    replayBtn.appendChild(pReplay);
+    statusDiv.insertBefore(replayIcon, statusP);
+    statusDiv.classList.add("status-button");
+    statusP.textContent = "  replay";
 
-    replayBtn.id = "#replay";
-    icon.classList.add("fa-solid", "fa-rotate", "fa-3x", "fa-spin");
-    pReplay.textContent = "replay";
+    replayIcon.classList.add("fa-solid", "fa-rotate", "fa-spin");
 
-    replayBtn.addEventListener("click", reset);
+    statusDiv.addEventListener("click", reset);
 };
 
 function reset() {
+    statusDiv.removeChild(replayIcon);
+    statusDiv.classList.remove("status-button");
     statusP.textContent = "Make a choice!";
+    message.textContent = "";
+    
     for (const el of humanPoints) {
         el.classList.remove("full");
         el.classList.add("empty");
@@ -113,8 +110,6 @@ function reset() {
     };
 
     score = [0, 0];
-
-    document.body.removeChild(replayBtn);
 };
 
 playGame();
