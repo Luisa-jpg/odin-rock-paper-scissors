@@ -1,116 +1,116 @@
-console.log("Hello World");
-
-/*
-function getRandomInt(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-  }
-
-0.7 * (4-1)+1
-3.1
-
-let gameChoice
-*/
-
-
-//Step 1: getComputerChoice
-
+//getComputerChoice
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3 + 1);
     return choice === 1 ? "rock"
         : choice === 2 ? "paper"
         : "scissors";
-}
+};
 
+// Scores
 
-//Step 2: getHumanChoice
-
-function getHumanChoice() {
-    let choice = prompt("Rock, paper, scissors - make your choice!").toLowerCase();
-    return choice === "rock" || choice === "paper" || choice === "scissors" ? choice
-    : alert( "Please input rock, paper or scissors." );
-}
-
-
-//Step 3: Scores
-
+let score = [0, 0]; //human, computer
 let humanScore = 0;
 let computerScore = 0;
 
-//Step 4: Round
-function youLose() {
-    alert( "You lost! Score: " + humanScore + " : " + ++computerScore);
-    return computerScore;
-}
+const humanPoints = document.querySelectorAll("#humanScore .empty");
+const computerPoints = document.querySelectorAll("#computerScore .empty");
 
-function youWin() {
-    alert( "You won! Score: " + ++humanScore + " : " + computerScore);
-    return humanScore;
-}
+// Status 
+const statusDiv = document.querySelector(".status");
+const statusP = document.querySelector(".status p");
+const ComMessage = "The computer chose ";
+const wMessage = "You won. ";
+const lMessage = "You lost. ";
+const drawMessage = "It's a draw. ";
+const replayIcon = document.createElement("i");
 
-function draw() {
-    alert( "It's a draw! Score: " + humanScore + " : " + computerScore);
-}
+const message = document.querySelector("#end");
+const btns = document.querySelector(".button-wrapper");
+
+
+// Round
 
 function playRound(computerChoice, humanChoice) {
-    switch (humanChoice) {
-        case "rock": switch (computerChoice) {
-            case "paper":
-                youLose();
-                return computerScore;
-                break;
-            case "scissors":
-                youWin();
-                return humanScore;
-                break;
-            default:
-                draw()
-                break;
-        }   break;
-        case "paper": switch (computerChoice) {
-            case "scissors":
-                youLose();
-                return computerScore;
-                break;
-            case "rock":
-                youWin();
-                return humanScore;
-                break;
-            default:
-                draw()
-                break;
-        }   break;
-        case "scissors": switch (computerChoice) {
-            case "rock":
-                youLose();
-                return computerScore;
-                break;
-            case "paper":
-                youWin();
-                return humanScore;
-                break;
-            default:
-                draw()
-                break;
-        }   break;
-    }
-}
+    const choices = [computerChoice, humanChoice];
 
+    if (        //player wins
+        (choices[0] === "rock") && (choices[1] === "paper")
+        || (choices[0] === "paper") && (choices[1] === "scissors")
+        || (choices[0] === "scissors") && (choices[1] === "rock")
+    ) {
+        ++score[0];
+        humanPoints[score[0]-1].classList.add("full");
+        statusP.textContent = wMessage + ComMessage + computerChoice + "!";
+    } else if ( //computer wins
+        (choices[1] === "rock") && (choices[0] === "paper")
+        || (choices[1] === "paper") && (choices[0] === "scissors")
+        || (choices[1] === "scissors") && (choices[0] === "rock")
+    ) {
+        ++score[1];
+        computerPoints[score[1]-1].classList.add("full");
+        statusP.textContent = lMessage + ComMessage + computerChoice + "!";
+    } else {    //draw
+        statusP.textContent = drawMessage + ComMessage + computerChoice + "!";
+    };
+    
+    return score;
+};
+
+// Game
 
 function playGame() {
-    for (let round = 1; round < 6; round++) {
-        console.log("Round " + round + " of 5")
-        console.log(playRound(getComputerChoice(), getHumanChoice()))
-    }
-    if (humanScore > computerScore) {
-        console.log("Congrats, you won the game! Final score: " + humanScore + " : " + computerScore)
-    } if (humanScore < computerScore) {
-        console.log("You lost the game... Final score: " + humanScore + " : " + computerScore)
-    } else {
-        console.log("It's a draw! Final score: " + humanScore + " : " + computerScore)
-    }
-}
+    btns.addEventListener('click', (e) => { ; //mit closest() lösen?
+        switch (e.target.id) {
+            case 'rockBtn':
+                score = playRound(getComputerChoice(), "rock");
+                break;
+            case 'paperBtn':
+                score = playRound(getComputerChoice(), "paper");
+                break;
+            case 'sciBtn':
+                score = playRound(getComputerChoice(), "scissors");
+                break;
+        };
 
-playGame()
+        if (score[0] === 5) {
+            message.textContent = "Congrats, you won the game!";
+            endGame();
+        };
+        if (score[1] === 5) {
+            message.textContent = "You lost the game...";
+            endGame();
+        };
+    }, false);
+};
+
+function endGame() {
+    statusDiv.insertBefore(replayIcon, statusP);
+    statusDiv.classList.add("status-button");
+    statusP.textContent = "  replay";
+
+    replayIcon.classList.add("fa-solid", "fa-rotate", "fa-spin");
+
+    statusDiv.addEventListener("click", reset);
+};
+
+function reset() {
+    statusDiv.removeChild(replayIcon);
+    statusDiv.classList.remove("status-button");
+    statusP.textContent = "Make a choice!";
+    message.textContent = "";
+    
+    for (const el of humanPoints) {
+        el.classList.remove("full");
+        el.classList.add("empty");
+    };
+    for (const el of computerPoints) {
+        el.classList.remove("full");
+        el.classList.add("empty");
+    };
+
+    score = [0, 0];
+};
+
+playGame();
+
