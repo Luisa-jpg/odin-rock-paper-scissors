@@ -11,12 +11,24 @@
 <body>
     <h1>Rock Paper Scissors</h1>
     <div class="button-wrapper">
-        <button id="rockBtn"><p></p><i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>rock</p></button>
-        <button id="paperBtn"><p></p><i class="fa-solid fa-hand fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>paper</p></button>
-        <button id="sciBtn"><p></p><i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i><p>scissors</p></button>
+        <button id="rockBtn">
+            <p id="rockBtn"></p>
+            <i class="fa-solid fa-hand-fist fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;" id="rockBtn"></i>
+            <p id="rockBtn">rock</p>
+        </button>
+        <button id="paperBtn">
+            <p id="paperBtn"></p>
+            <i class="fa-solid fa-hand fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;" id="paperBtn"></i>
+            <p id="paperBtn">paper</p>
+        </button>
+        <button id="sciBtn">
+            <p id="sciBtn"></p>
+            <i class="fa-solid fa-hand-scissors fa-rotate-90 fa-3x fa-fade" style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;" id="sciBtn"></i>
+            <p id="sciBtn">scissors</p>
+        </button>
     </div>
     <div class="status">
-        <p>The computer chose scissors!</p>
+        <p>Make your choice!</p>
     </div>
     <div class="score-wrapper-outer">
         <h3>Score <span style="color: rgb(134, 223, 228)"><i class="fa-solid fa-gamepad"></i></span></h2>
@@ -32,7 +44,7 @@
                 </div>
             </div>
 
-            <p style="color: rgb(134, 223, 228)">:</p>
+            <p style="color: rgb(134, 223, 228); font-size: 1.5em">:</p>
 
             <div class="score-side" id="computerScore">
                 <p>computer</p>
@@ -48,6 +60,11 @@
         <p id="end"></p>
     </div>
 
+    <!--<button id="replay">
+        <p id="replay"></p>
+        <i class="fa-solid fa-rotate fa-3x fa-spin" id="replay"></i>
+        <p id="replay">replay</p>
+    </button>-->
 </body>
 
 </html>
